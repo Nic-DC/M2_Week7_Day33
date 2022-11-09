@@ -67,7 +67,7 @@ const displayAllBooks = () => {
                             <h5 class="card-title">${book.title}</h5>
                             <p class="card-text uniqueIds">${book.asin}</p>
                             <button type="button" class="btn btn-dark addToCart-btn" id="addToCartBtn"  
-                            
+                            onclick="${addToCart(book)}"
                             >Add to cart</button>
                             <button type="button" class="btn btn-danger removeBook-btn" id="removeBookBtn">Skip</button>
                             
@@ -75,6 +75,7 @@ const displayAllBooks = () => {
                           </div>
                         </div>
                       </div>`;
+
     allIds.push(book.asin);
   });
 
@@ -96,20 +97,27 @@ Ex4 & 5 & 6:
 
 // allAddBtns = document.querySelectorAll(".addToCart-btn");
 // allSkipBtns = document.querySelectorAll(".removeBook-btn");
+allAddBtns = document.querySelectorAll(".addToCart-btn");
+allSkipBtns = document.querySelectorAll(".removeBook-btn");
+uniqueIds = document.querySelectorAll(".uniqueIds");
+console.log({ allAddBtns });
+console.log({ allBooks });
+const addToCart = (param) => {
+  const books = allBooks;
 
-const addToCart = () => {
-  for (let i = 0; i < allAddBtns.length; i++) {
-    allAddBtns[i].addEventListener("click", () => {
-      card.innerHTML += `
-                        <a href="#" class="list-group-item list-group-item-action active">
+  //for (let i = 0; i < allAddBtns.length; i++) {
+  //console.log(allAddBtns[i]);
+  //allAddBtns[i].addEventListener("click", () => {
+  cart.innerHTML += `
+                        <a href="#" class="list-group-item list-group-item-action">
                         <div class="d-flex w-100 justify-content-between">
-                          <h5 class="mb-1">${allBooks[i].title}</h5>
-                          <small>${allBooks[i].asin}</small>
+                          <h5 class="mb-1">${param.title}</h5>
+                          <small>${param.asin}</small>
                         </div>
-                        <p class="mb-1">${allBooks[i].category}</p>
-                        <small>$${allBooks[i].title}</small>
+                        <p class="mb-1">${param.category}</p>
+                        <small>$${param.title}</small>
                       </a>`;
-    });
-  }
+  //});
+  //}
 };
-addToCart();
+//addToCart();
