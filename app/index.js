@@ -66,11 +66,11 @@ const displayAllBooks = () => {
                           <div class="card-body">
                             <h5 class="card-title">${book.title}</h5>
                             <p class="card-text uniqueIds">${book.asin}</p>
-                            <button type="button" class="btn btn-dark addToCart-btn" id="addToCartBtn"  
-                            onclick="${addToCart(book)}"
+                            <button type="button" class="btn btn-dark addToCart-btn" id="addToCartBtn"
+                            onclick="addToCart('${book.title}', '${book.asin}', '${book.price}','${book.category}')"
                             >Add to cart</button>
                             <button type="button" class="btn btn-danger removeBook-btn" id="removeBookBtn">Skip</button>
-                            
+
                             <span class="badge badge-pill badge-warning badge-card-added">Added to cart</span>
                           </div>
                         </div>
@@ -78,6 +78,25 @@ const displayAllBooks = () => {
 
     allIds.push(book.asin);
   });
+  // for (let i = 0; i < allBooks.length; i++) {
+  //   row.innerHTML += `<div class="cal12 col-sm-6 col-md-4 col-lg-3">
+  //                       <div class="card"">
+  //                         <img src="${allBooks[i].img}" class="card-img-top card-image" alt="...">
+  //                         <div class="card-body">
+  //                           <h5 class="card-title">${allBooks[i].title}</h5>
+  //                           <p class="card-text uniqueIds">${allBooks[i].asin}</p>
+  //                           <button type="button" class="btn btn-dark addToCart-btn" id="addToCartBtn"
+  //                           onclick="${addToCart(allBooks[i])}"
+  //                           >Add to cart</button>
+  //                           <button type="button" class="btn btn-danger removeBook-btn" id="removeBookBtn">Skip</button>
+
+  //                           <span class="badge badge-pill badge-warning badge-card-added">Added to cart</span>
+  //                         </div>
+  //                       </div>
+  //                     </div>`;
+
+  //allIds.push(book.asin);
+  //}
 
   allAddBtns = document.querySelectorAll(".addToCart-btn");
   allSkipBtns = document.querySelectorAll(".removeBook-btn");
@@ -97,25 +116,22 @@ Ex4 & 5 & 6:
 
 // allAddBtns = document.querySelectorAll(".addToCart-btn");
 // allSkipBtns = document.querySelectorAll(".removeBook-btn");
-allAddBtns = document.querySelectorAll(".addToCart-btn");
-allSkipBtns = document.querySelectorAll(".removeBook-btn");
-uniqueIds = document.querySelectorAll(".uniqueIds");
+
+// uniqueIds = document.querySelectorAll(".uniqueIds");
 console.log({ allAddBtns });
 console.log({ allBooks });
-const addToCart = (param) => {
-  const books = allBooks;
-
+const addToCart = (title, asin, price, category) => {
   //for (let i = 0; i < allAddBtns.length; i++) {
   //console.log(allAddBtns[i]);
   //allAddBtns[i].addEventListener("click", () => {
-  cart.innerHTML += `
+  cart.innerHTML = `
                         <a href="#" class="list-group-item list-group-item-action">
                         <div class="d-flex w-100 justify-content-between">
-                          <h5 class="mb-1">${param.title}</h5>
-                          <small>${param.asin}</small>
+                          <h5 class="mb-1">${title}</h5>
+                          <small>${asin}</small>
                         </div>
-                        <p class="mb-1">${param.category}</p>
-                        <small>$${param.title}</small>
+                        <p class="mb-1">${category}</p>
+                        <small>$${price}</small>
                       </a>`;
   //});
   //}
